@@ -76,4 +76,9 @@ document.addEventListener("keydown",function(e){
 
 });
 
-document.addEventListener("
+document.addEventListener("keyup", function(){
+
+    moving = false;
+    frame = 0;
+
+});
