@@ -19,7 +19,8 @@ body{
 }
 #world{
     position:absolute;
-
+left:0;
+top:0;
     width:3000px;
     height:2000px;
 
