@@ -34,7 +34,10 @@ player.style.top = y + "px";
 
 document.addEventListener("keydown",function(e){
 
-    moving = true;
+    if(!moving){
+        moving = true;
+        frame = 0;
+    }
 
     switch(e.key){
 
@@ -73,7 +76,4 @@ document.addEventListener("keydown",function(e){
 
 });
 
-document.addEventListener("keyup",function(){
-
-    moving = false;
-});
+document.addEventListener("
