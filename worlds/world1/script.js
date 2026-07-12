@@ -1,1 +1,7 @@
-alert("script.js berjaya dimuatkan");
+class GameScene extends Phaser.Scene {
+
+    constructor() {
+        super("GameScene");
+    }
+
+    preload
