@@ -32,23 +32,11 @@ body{
 /* Watak */
 
 #player{
-
     position:absolute;
-
     width:48px;
     height:48px;
-
     left:120px;
     top:500px;
-
     border-radius:50%;
-
     background:#ffcf66;
-
-    border:3px solid white;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.35);
-
-    transition:.08s linear;
-
 }
