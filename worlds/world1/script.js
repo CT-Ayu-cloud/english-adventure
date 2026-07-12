@@ -7,7 +7,7 @@ const speed = 6;
 // ====== ANIMATION ======
 let frame = 0;
 let moving = false;
-const keys = {};
+
 
 function showFrame() {
 
