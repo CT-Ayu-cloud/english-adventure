@@ -12,14 +12,17 @@ function showFrame() {
 
     const folder = moving ? "Walking" : "Idle";
 
+    const maxFrame = moving ? 23 : 17;
+
     player.style.backgroundImage =
         `url("../../assets/assets/player/explorer/0_Forest_Ranger_${folder}_${String(frame).padStart(3,"0")}.png")`;
 
     frame++;
 
-    if(frame > 23){
+    if(frame > maxFrame){
         frame = 0;
     }
+
 }
 
 setInterval(showFrame,80);
