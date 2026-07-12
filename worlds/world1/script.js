@@ -1,16 +1,37 @@
-
 const player = document.getElementById("player");
 
 let x = 120;
 let y = 500;
-
 const speed = 6;
 
-// Letakkan pemain pada kedudukan permulaan
+// ====== ANIMATION ======
+let frame = 0;
+let moving = false;
+
+function showFrame() {
+
+    const folder = moving ? "Walking" : "Idle";
+
+    player.style.backgroundImage =
+        `url("../../assets/assets/player/explorer/0_Forest_Ranger_${folder}_${String(frame).padStart(3,"0")}.png")`;
+
+    frame++;
+
+    if(frame > 23){
+        frame = 0;
+    }
+}
+
+setInterval(showFrame,80);
+
+// ====== MOVEMENT ======
+
 player.style.left = x + "px";
 player.style.top = y + "px";
 
-document.addEventListener("keydown", function(e){
+document.addEventListener("keydown",function(e){
+
+    moving = true;
 
     switch(e.key){
 
@@ -45,4 +66,9 @@ document.addEventListener("keydown", function(e){
     player.style.left = x + "px";
     player.style.top = y + "px";
 
+});
+
+document.addEventListener("keyup",function(){
+
+    moving = false;
 });
