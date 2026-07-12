@@ -18,9 +18,10 @@ body{
     position:relative;
 }
 #world{
-    position:relative;
-    width:100vw;
-    height:100vh;
+    position:absolute;
+
+    width:3000px;
+    height:2000px;
 
     /* Langit */
     background:
