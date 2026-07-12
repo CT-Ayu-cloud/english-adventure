@@ -1,5 +1,4 @@
 alert("Script Loaded");
-
 const player = document.getElementById("player");
 
 let x = 120;
