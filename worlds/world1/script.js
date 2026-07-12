@@ -1,45 +1,31 @@
-const player = document.getElementById("player");
+const config = {
+    type: Phaser.AUTO,
 
-let x = 100;
-let y = 420;
+    parent: "game",
 
-const speed = 10;
+    width: 1280,
+    height: 720,
 
-function updatePlayer(){
+    backgroundColor: "#87CEEB",
 
-    player.style.left = x + "px";
-    player.style.top = y + "px";
+    scene: {
+        create: create
+    }
+};
+
+new Phaser.Game(config);
+
+function create(){
+
+    this.add.text(
+        380,
+        60,
+        "🌴 ANIMAL ISLAND",
+        {
+            fontSize: "48px",
+            color: "#ffffff",
+            fontStyle: "bold"
+        }
+    );
 
 }
-
-document.addEventListener("keydown", function(e){
-
-    switch(e.key){
-
-        case "ArrowLeft":
-            x -= speed;
-            break;
-
-        case "ArrowRight":
-            x += speed;
-            break;
-
-        case "ArrowUp":
-            y -= speed;
-            break;
-
-        case "ArrowDown":
-            y += speed;
-            break;
-
-    }
-
-    // Had sempadan skrin
-    x = Math.max(0, Math.min(window.innerWidth - 60, x));
-    y = Math.max(0, Math.min(window.innerHeight - 60, y));
-
-    updatePlayer();
-
-});
-
-updatePlayer();
