@@ -1,14 +1,54 @@
-html,
-body{
+*{
     margin:0;
     padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
     width:100%;
     height:100%;
     overflow:hidden;
-    background:#87CEEB;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-#game{
+#world{
+    position:relative;
     width:100vw;
     height:100vh;
+
+    /* Langit */
+    background:
+    linear-gradient(
+        to bottom,
+        #79c8ff 0%,
+        #9edbff 35%,
+        #6ec6ff 45%,
+        #69d45d 46%,
+        #7fdb69 100%
+    );
+}
+
+/* Watak */
+
+#player{
+
+    position:absolute;
+
+    width:48px;
+    height:48px;
+
+    left:120px;
+    top:500px;
+
+    border-radius:50%;
+
+    background:#ffcf66;
+
+    border:3px solid white;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+
+    transition:.08s linear;
+
 }
