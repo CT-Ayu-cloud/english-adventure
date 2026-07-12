@@ -51,12 +51,14 @@ document.addEventListener("keydown",function(e){
         case "a":
         case "A":
             x -= speed;
+            player.style.transform = "scaleX(-1)";
             break;
 
         case "ArrowRight":
         case "d":
         case "D":
             x += speed;
+            player.style.transform = "scaleX(1)";
             break;
 
         default:
