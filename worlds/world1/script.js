@@ -16,7 +16,7 @@ let moving = false;
 function showFrame(){
 
     const folder = moving ? "Walking" : "Idle";
-    const maxFrame = moving ? 23 : 17;
+    const maxFrame = moving ? 7 : 7;
 
     player.style.backgroundImage =
   player.style.backgroundImage =
