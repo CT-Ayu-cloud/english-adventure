@@ -15,7 +15,7 @@ function showFrame() {
     const maxFrame = moving ? 23 : 17;
 
     player.style.backgroundImage =
-        `url("../../assets/assets/player/explorer/0_Forest_Ranger_${folder}_${String(frame).padStart(3,"0")}.png")`;
+        `url("../../assets/player/explorer/0_Forest_Ranger_${folder}_${String(frame).padStart(3,"0")}.png")`;
 
     frame++;
 
