@@ -33,7 +33,9 @@ setInterval(showFrame,80);
 player.style.left = x + "px";
 player.style.top = y + "px";
 
-document.addEventListener("keydown",function(e){
+document.addEventListener("keydown", function(e){
+
+    keys[e.key] = true;
 
     if(!moving){
         moving = true;
