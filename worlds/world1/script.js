@@ -2,21 +2,24 @@ const player = document.getElementById("player");
 
 let x = 120;
 let y = 500;
+
 const speed = 6;
 
-// ====== ANIMATION ======
+// ===== PLAYER =====
+player.style.left = x + "px";
+player.style.top = y + "px";
+
+// ===== ANIMATION =====
 let frame = 0;
 let moving = false;
 
-
-function showFrame() {
+function showFrame(){
 
     const folder = moving ? "Walking" : "Idle";
-
     const maxFrame = moving ? 23 : 17;
 
     player.style.backgroundImage =
-        `url("../../assets/player/explorer/0_Forest_Ranger_${folder}_${String(frame).padStart(3,"0")}.png")`;
+    `url("../../assets/player/explorer/0_Forest_Ranger_${folder}_${String(frame).padStart(3,"0")}.png")`;
 
     frame++;
 
@@ -28,50 +31,35 @@ function showFrame() {
 
 setInterval(showFrame,80);
 
-// ====== MOVEMENT ======
+// ===== MOVEMENT =====
 
-player.style.left = x + "px";
-player.style.top = y + "px";
+document.addEventListener("keydown",function(e){
 
-document.addEventListener("keydown", function(e){
-
-    keys[e.key] = true;
-
-    if(!moving){
-        moving = true;
-        frame = 0;
-    }
+    moving = true;
 
     switch(e.key){
 
         case "ArrowUp":
-        case "w":
-        case "W":
             y -= speed;
             break;
 
         case "ArrowDown":
-        case "s":
-        case "S":
             y += speed;
             break;
 
         case "ArrowLeft":
-        case "a":
-        case "A":
             x -= speed;
             player.style.transform = "scaleX(-1)";
             break;
 
         case "ArrowRight":
-        case "d":
-        case "D":
             x += speed;
             player.style.transform = "scaleX(1)";
             break;
 
         default:
             return;
+
     }
 
     player.style.left = x + "px";
@@ -79,7 +67,7 @@ document.addEventListener("keydown", function(e){
 
 });
 
-document.addEventListener("keyup", function(){
+document.addEventListener("keyup",function(){
 
     moving = false;
     frame = 0;
