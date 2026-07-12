@@ -5,6 +5,10 @@ let y = 500;
 
 const speed = 6;
 
+// Letakkan pemain pada kedudukan permulaan
+player.style.left = x + "px";
+player.style.top = y + "px";
+
 document.addEventListener("keydown", function(e){
 
     switch(e.key){
@@ -33,6 +37,8 @@ document.addEventListener("keydown", function(e){
             x += speed;
             break;
 
+        default:
+            return;
     }
 
     player.style.left = x + "px";
