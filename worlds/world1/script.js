@@ -29,7 +29,7 @@ function showFrame(){
 
 }
 
-setInterval(showFrame,80);
+setInterval(showFrame,120);
 
 // ===== MOVEMENT =====
 
