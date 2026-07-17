@@ -1,5 +1,18 @@
 const player = document.getElementById("player");
+// ===== PRELOAD SPRITES =====
+const preloadImages = [];
 
+for(let i = 0; i <= 7; i++){
+
+    const idle = new Image();
+    idle.src = `../../assets/assets/player/explorer/0_Forest_Ranger_Idle_${String(i).padStart(3,"0")}.png`;
+    preloadImages.push(idle);
+
+    const walk = new Image();
+    walk.src = `../../assets/assets/player/explorer/0_Forest_Ranger_Walking_${String(i).padStart(3,"0")}.png`;
+    preloadImages.push(walk);
+
+}
 let x = 120;
 let y = 500;
 
