@@ -1,88 +1,68 @@
-const player = document.getElementById("player");
-// ===== PRELOAD SPRITES =====
-const preloadImages = [];
+const config = {
+    type: Phaser.AUTO,
+    width: 1280,
+    height: 720,
+    parent: "game",
 
-for(let i = 0; i <= 7; i++){
-
-    const idle = new Image();
-    idle.src = `../../assets/assets/player/explorer/0_Forest_Ranger_Idle_${String(i).padStart(3,"0")}.png`;
-    preloadImages.push(idle);
-
-    const walk = new Image();
-    walk.src = `../../assets/assets/player/explorer/0_Forest_Ranger_Walking_${String(i).padStart(3,"0")}.png`;
-    preloadImages.push(walk);
-
-}
-let x = 120;
-let y = 500;
-
-const speed = 6;
-
-// ===== PLAYER =====
-player.style.left = x + "px";
-player.style.top = y + "px";
-
-// ===== ANIMATION =====
-let frame = 0;
-let moving = false;
-
-function showFrame(){
-
-    const folder = moving ? "Walking" : "Idle";
-    const maxFrame = moving ? 7 : 7;
-
-    player.style.backgroundImage =
-  player.style.backgroundImage =
-`url("../../assets/assets/player/explorer/0_Forest_Ranger_${folder}_${String(frame).padStart(3,"0")}.png")`;
-    frame++;
-
-    if(frame > maxFrame){
-        frame = 0;
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
     }
+};
+
+const game = new Phaser.Game(config);
+
+let player;
+let cursors;
+
+function preload() {
 
 }
 
-setInterval(showFrame,120);
+function create() {
 
-// ===== MOVEMENT =====
+    // Langit
+    this.add.rectangle(1500, 1000, 3000, 2000, 0x87ceeb);
 
-document.addEventListener("keydown",function(e){
+    // Tanah
+    this.add.rectangle(1500, 1500, 3000, 1000, 0x66bb55);
 
-    moving = true;
+    // Pemain (kotak sementara)
+    player = this.add.rectangle(300, 500, 40, 60, 0x0066ff);
 
-    switch(e.key){
+    this.physics.add.existing(player);
 
-        case "ArrowUp":
-            y -= speed;
-            break;
+    player.body.setCollideWorldBounds(true);
 
-        case "ArrowDown":
-            y += speed;
-            break;
+    this.physics.world.setBounds(0, 0, 3000, 2000);
 
-        case "ArrowLeft":
-            x -= speed;
-            player.style.transform = "scaleX(-1)";
-            break;
+    this.cameras.main.setBounds(0, 0, 3000, 2000);
 
-        case "ArrowRight":
-            x += speed;
-            player.style.transform = "scaleX(1)";
-            break;
+    this.cameras.main.startFollow(player, true);
 
-        default:
-            return;
+    cursors = this.input.keyboard.createCursorKeys();
+}
 
+function update() {
+
+    player.body.setVelocity(0);
+
+    const speed = 200;
+
+    if (cursors.left.isDown) {
+        player.body.setVelocityX(-speed);
     }
 
-    player.style.left = x + "px";
-    player.style.top = y + "px";
+    if (cursors.right.isDown) {
+        player.body.setVelocityX(speed);
+    }
 
-});
+    if (cursors.up.isDown) {
+        player.body.setVelocityY(-speed);
+    }
 
-document.addEventListener("keyup",function(){
-
-    moving = false;
-    frame = 0;
-
-});
+    if (cursors.down.isDown) {
+        player.body.setVelocityY(speed);
+    }
+}
